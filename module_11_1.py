@@ -30,9 +30,9 @@ for st in vol_stock.keys():
     val_list.append(line)
 
 # Сохраняем полученные данные в файл .xlsx, используя pandas
-df1 = pandas.DataFrame(val_list, columns=column_list)
+df = pandas.DataFrame(val_list, columns=column_list)
 with pandas.ExcelWriter('volume_stock.xlsx') as file:
-    df1.to_excel(file)
+    df.to_excel(file)
 
 # Построение графиков на основе данных из файла .xlsx, с помощью matplotlib
 stock_data = pandas.read_excel('volume_stock.xlsx')
