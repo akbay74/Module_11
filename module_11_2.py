@@ -13,12 +13,16 @@ class Human():
 def introspection_info(obj):
     obj_type = type(obj).__name__
     attributes = dir(obj)
+    attrs = []
+    for attr in attributes:
+        if not callable(getattr(obj, attr)):
+            attrs.append(attr)
     methods = []
     for method in attributes:
         if callable(getattr(obj, method)):
             methods.append(method)
     module = obj.__class__.__module__
-    info = {'type': obj_type, 'attributes': attributes, 'methods': methods, 'module': module},
+    info = {'type': obj_type, 'attributes': attrs, 'methods': methods, 'module': module},
     return info
 
 number_info = introspection_info(42)
